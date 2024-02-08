@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
 
         // 購買履歴データ作成
         $items = Item::all();
-        Purchase::factory(50)->create()
+        Purchase::factory(300)->create()
         ->each(function(Purchase $purchase) use ($items) {
             $purchase->items()->attach(
                 $items->random(rand(1,3))->pluck('id')->toArray(),
