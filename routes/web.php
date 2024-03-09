@@ -8,13 +8,19 @@ use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\AnalysisController;
 
+// 商品管理
 Route::resource('items', ItemController::class)->middleware(['auth', 'verified']);
 
+// 顧客管理
 Route::resource('customers', CustomerController::class)->middleware(['auth', 'verified']);
 
+// 購買履歴
 Route::resource('purchases', PurchaseController::class)->middleware(['auth', 'verified']);
 
+// データ分析
+Route::get('analysis', [AnalysisController::class, 'index'])->name('analysis');
 
 Route::get('/inertia-test', function () {
     return Inertia::render('InertisTest');
